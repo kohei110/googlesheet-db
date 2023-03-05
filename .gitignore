@@ -1,4 +1,4 @@
-auth/
+auth
 config.yml
 __pycache__/
 .DS_Store
