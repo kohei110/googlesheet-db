@@ -1,0 +1,83 @@
+# here is the second gretle script
+
+# Binomial dist
+# Independent trial
+# outcome is binary
+# n trial is independent
+# X~B(n,p)
+
+# class of 50 student, p of passing exam is 0.63
+# what is the probability that exactly 25 pass the exam
+
+
+scalar binom25 = pdf(b, 0.63, 50, 25)
+print binom25
+
+# X~B(50, 0.63)
+# binom25 =  0.019513733
+
+# CDF gives the probability that X<=30 etc
+
+scalar binom30less = cdf(b, .63, 50, 30)
+print binom30less
+# binom30less =  0.38050846
+
+scalar binom30more = 1- cdf(b, .63, 50, 30)
+print binom30more
+#    binom30more =  0.61949154
+
+
+#Poisson distribution
+# number of occurrence in fixed interval
+# Parameter is the mean number of occurecece = lambda
+
+# X~P(lambda)
+# number of amazon truck pass by my neighbor 12 per day
+
+# X~P(12)
+
+# What is the probability is the 10 Amazon
+
+scalar pois10 = pdf(p, 12, 10)
+print pois10
+# pois10 =  0.10483726
+
+scalar pois20 = pdf(p, 12, 20)
+print pois20
+# pois20 =  0.0096820322
+
+
+# what is the prob more than 20 truck
+# more = 1- cdf()
+# less = cdf()
+scalar pois_more20 = 1 - cdf(p, 12, 20)
+print pois_more20
+#  pois_more20 =  0.011597737
+
+
+
+# continuous uniform distribution
+# X~U(11,22)
+# probability of an arbitrary value within the interval
+# probability between 15 and 18
+
+eval (18-15)*(1/(22-11))
+
+
+# Normal dist
+#IQ Scoress are normaly distributed with a mean of 100 and standard deviation of 15.(variance 15^2 = 225)
+
+# X~N(100, 225)
+
+# what is the probability of that someone has greater than 150?, less than 80 and between 90 and 120
+
+#Step1: Convert to Z-score
+scalar z1 = (150-100)/15
+scalar z2 = (80-100)/15
+scalar z3 = (90-100)/15
+scalar z4 = (120-100)/15
+
+scalar iqmore150 = 1- cdf(z,z1) # 0.00042906
+scalar iqless80 = cdf(z,z2) # 0.0912112
+
+scalar iqless_90_120 = cdf(z,z4) - cdf(z,z3) # 0.656296
